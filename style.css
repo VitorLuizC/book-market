@@ -1,0 +1,27 @@
+/**
+ * Reset
+ */
+
+html { font-size: 62.5%; }
+
+html,
+body { height: 100%; }
+
+body {
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  background-color: #4169E1;
+  background-image: linear-gradient(#e041d0, transparent);
+}
+
+body,
+figure { margin: 0; }
+
+figure { padding: 0; }
+
+main,
+figure > img { display: block; }
+
+/**
+ * Components
+ */
