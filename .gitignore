@@ -1,3 +1,15 @@
 # Node.js modules
 node_modules/*
 node_modules
+
+# Yarn and NPM on root
+yarn.lock
+!*/yarn.lock
+package.json
+!*/package.json
+
+# Log files
+logs
+logs/*
+*.logs
+npm-debug.log.*
