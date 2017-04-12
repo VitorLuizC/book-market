@@ -1,0 +1,13 @@
+{
+  "name": "book-market-server",
+  "version": "1.0.0",
+  "description": "A simple trade market system to offer, announce and trade your books.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vitor Luiz Cavalcanti <vitorluizc@outlook.com>",
+  "license": "MIT"
+}
