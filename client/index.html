@@ -16,6 +16,62 @@
     <meta name="theme-color" content="#4169e1">
   </head>
   <body>
+    <!--
+      TODO:
+        - Formulário de cadastro de livros;
+        - Lista de livros cadastrados;
+        - Detalhes do livro.
+    -->
+    <h1>Book Market</h1>
+
+    <section>
+      <h2>Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Book</th>
+            <th colspan="3">Owner</th>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Author</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+            <th>Phone / WhatsApp</th>
+          </tr>
+        </thead>
+        <tbody id="books"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Add new book</h2>
+      <form>
+        <fieldset>
+          <legend>Book</legend>
+          <label for="book-name">Name</label>
+          <input id="book-name" type="text">
+          <label for="book-year">Year</label>
+          <input id="book-year" type="number" default="2017">
+          <label for="book-author">Author</label>
+          <input id="book-author" type="text">
+        </fieldset>
+        <fieldset>
+          <legend>Owner</legend>
+          <label for="owner-name">Name</label>
+          <input id="owner-name" type="text">
+          <label for="owner-email">E-Mail</label>
+          <input id="owner-email" type="email">
+          <label for="owner-phone">Phone / WhatsApp</label>
+          <input id="owner-phone" type="text">
+        </fieldset>
+        <fieldset>
+          <button id="button-add" type="submit">Add</button>
+        </fieldset>
+      </form>
+    </section>
+
     <script src="/main.js"></script>
   </body>
 </html>
