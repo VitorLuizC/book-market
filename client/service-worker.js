@@ -37,5 +37,3 @@ self.addEventListener('fetch', event => {
 
   event.respondWith(cacheFetch())
 })
-
-

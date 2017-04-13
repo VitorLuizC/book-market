@@ -1,4 +1,4 @@
-if (!'serviceWorker' in navigator) // Caso o browser dê suporte a service workers
+if ('serviceWorker' in navigator) // Caso o browser dê suporte a service workers
   navigator.serviceWorker         // o registro e deixo ele lidar com o browser.
     .register('./service-worker.js')
 
@@ -17,7 +17,7 @@ function addBook(event) {
   }
 
   const owner = {
-    name: document.querySelector('#owner-name').value || '',
+    name: document.querySelector('#owner-name').value || 'Anonymous',
     email: document.querySelector('#owner-email').value || '',
     phone: document.querySelector('#owner-phone').value || ''
   }
@@ -51,7 +51,24 @@ function getBooks() {
       'Content-Type': 'application/json'
     }
   })
-    .then(response => response.json())
+    .then(response => {
+      // let cache = null
+
+      // caches
+      //   .open('book-market-cache')
+      //   .then($cache => {
+      //     cache = $cache
+      //     return cache.match('./books.json')
+      //       .then(matched => matched
+      //         ? cache
+      //           .delete('./books.json')
+      //           .then(() => cache.put('./books.json', response))
+      //         : cache.put('./books.json', response))
+      //   })
+      //   .catch(error => console.error(error))
+
+      return response.json()
+    })
     .then(books => renderBooks(books))
     .catch(error => console.error(error))
 }
@@ -61,7 +78,8 @@ function renderBooks(books) {
 
   table.innerHTML = '' // Limpa o conteúdo antigo
 
-  books.forEach(book => table.innerHTML += `
+  books.forEach(book =>
+    table.innerHTML += `
       <tr>
         <td>${book.book.name}</td>
         <td>${book.book.year}</td>
@@ -70,5 +88,6 @@ function renderBooks(books) {
         <td>${book.owner.email}</td>
         <td>${book.owner.phone}</td>
       </tr>
-    `);
+    `
+  )
 }
