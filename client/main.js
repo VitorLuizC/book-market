@@ -5,6 +5,7 @@ if (!'serviceWorker' in navigator) // Caso o browser dê suporte a service worke
 document.querySelector('#button-add').addEventListener('click', addBook)
 
 getBooks()
+
 /**
  * @param {Event} event
  */
