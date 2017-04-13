@@ -4,6 +4,7 @@ if (!'serviceWorker' in navigator) // Caso o browser dê suporte a service worke
 
 document.querySelector('#button-add').addEventListener('click', addBook)
 
+getBooks()
 /**
  * @param {Event} event
  */
@@ -28,9 +29,45 @@ function addBook(event) {
     },
     body: JSON.stringify({ book, owner })
   })
-    .then(() => alert('Aê, parabéns!'))
+    .then(() => {
+      alert('Aê, parabéns!')
+      getBooks()
+    })
     .catch(error => alert('Se fodeu!'))
 
   event.preventDefault()
   event.stopPropagation()
+}
+
+/**
+ * Obtém do servidor, ou do cache, os livros e os renderiza na tela.
+ */
+function getBooks() {
+  fetch('/book', {
+    method: 'get',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(books => renderBooks(books))
+    .catch(error => console.error(error))
+}
+
+function renderBooks(books) {
+  let table = document.querySelector('#books')
+
+  table.innerHTML = '' // Limpa o conteúdo antigo
+
+  books.forEach(book => table.innerHTML += `
+      <tr>
+        <td>${book.book.name}</td>
+        <td>${book.book.year}</td>
+        <td>${book.book.author}</td>
+        <td>${book.owner.name}</td>
+        <td>${book.owner.email}</td>
+        <td>${book.owner.phone}</td>
+      </tr>
+    `);
 }
